@@ -5,16 +5,7 @@ export default class Step1 extends Component {
   state = {
     chosen: []
   };
-  questions = [
-    { q: "git", key: "git" },
-    { q: 'node modules (as in import x from "x")', key: "node_modules" },
-    { q: "sass", key: "sass" },
-    {
-      q:
-        "eslint (as in you completed xxx and would like the editor help you writing error free JS)",
-      key: "eslint"
-    }
-  ];
+
   checked = e => {
     e.persist();
     console.log(e.target.value);
@@ -32,22 +23,25 @@ export default class Step1 extends Component {
   };
   submitted = e => {
     console.log("submitted");
+    this.props.onSubmit(this.state.chosen);
   };
   render() {
     if (!this.props.active) {
       return "";
     }
-    const questions = this.questions.map((q, i) => {
+    const questions = this.props.questions.map((q, i) => {
       //return <Checkbox name={q.key} value={q.key} label={q.q} />;
       return (
-        <Checkbox
-          key={i}
-          id={"switch_" + i}
-          value={q.key}
-          label={q.q}
-          type="switch"
-          onClick={this.checked}
-        />
+        <div key={i}>
+          <Checkbox
+            id={"switch_" + i}
+            value={q.key}
+            label={q.q}
+            type="switch"
+            onClick={this.checked}
+          />
+          <p>{q.d}</p>
+        </div>
       );
     });
     return (

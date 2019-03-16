@@ -22,6 +22,7 @@ $checkbox__label__color--disabled: $color__text--low;
 
 button {
   background: $color__primary;
+  margin-top: $checkbox__size;
   color: $color__text;
   padding: 8px;
   border: $checkbox__border__color;
@@ -35,6 +36,10 @@ button {
     background: $color__back--high;
     cursor: default;
   }
+}
+#Step1 p {
+  margin-left: $checkbox__size * 3;
+  color: $color__text--low;
 }
 #NavBar {
   h1 {
