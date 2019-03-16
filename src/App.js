@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 import Step1 from "./components/steps/Step1";
-import Step2 from "./components/steps/Step1";
+import InstructionsContainer from "./components/instructions/InstructionsContainer";
 
 class App extends Component {
   state = {
@@ -41,6 +41,9 @@ class App extends Component {
             questions={this.questions}
             active={this.state.step === 1}
           />
+          {this.state.step === 2 && (
+            <InstructionsContainer data={this.state.chosen} />
+          )}
         </Main>
       </div>
     );
