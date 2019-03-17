@@ -3,12 +3,18 @@ import Git from "./Git";
 import Nodemodules from "./Nodemodules";
 import Sass from "./Sass";
 import Eslint from "./Eslint";
+import Commands from "./Commands";
 export default class InstructionsContainer extends Component {
   state = {
     isParcel: false,
-    hasRunNPMInit: false
+    hasRunNPMInit: false,
+    commands: []
   };
-
+  addCommand = command => {
+    this.setState(prevState => ({
+      commands: prevState.commands.concat(command)
+    }));
+  };
   setIsParcel = e => {
     this.setState({
       isParcel: true
@@ -23,6 +29,11 @@ export default class InstructionsContainer extends Component {
     const filtered = this.props.questions.filter(q => {
       return this.props.chosen.includes(q.key);
     });
+    const npmINITCandidates = ["eslint", "node_modules", "sass"];
+    const whoShouldRunINPInit = filtered.find(candidate =>
+      npmINITCandidates.includes(candidate.key)
+    );
+    //console.log(whoShouldRunINPInit);
     const options = {
       git: Git,
       sass: Sass,
@@ -35,10 +46,10 @@ export default class InstructionsContainer extends Component {
         <SpecificStory
           story={item}
           key={item.key}
-          hasRunNPMInit={this.state.hasRunNPMInit}
+          shouldRunNPMInit={whoShouldRunINPInit.key === item.key}
           isParcel={this.state.isParcel}
-          onRunNPMInit={this.setHasRunNPMInit}
           onIsParcel={this.setIsParcel}
+          addCommand={this.addCommand}
         />
       );
     });
@@ -46,7 +57,12 @@ export default class InstructionsContainer extends Component {
       <section id="InstructionsContainer">
         <h1>Instructions</h1>
         {chosen}
-        {/*TODO on empty selections*/}
+        {chosen.length === 0 && (
+          <h3>Chose a few technologies, then come back :-)</h3>
+        )}
+        {chosen.length > 0 && <Commands commands={this.state.commands} />}
+        {/*TODO*/}
+        {/* post notes container (add this to scripts, how to "live-server") */}
         {/*additional steps needed (like sass watch)*/}
         {/*While developing container*/}
       </section>

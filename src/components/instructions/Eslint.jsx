@@ -1,8 +1,30 @@
 import React, { Component } from "react";
 
 export default class Eslint extends Component {
-  componentDidMount() {
-    this.props.onRunNPMInit();
+  constructor(props) {
+    super(props);
+    if (this.props.shouldRunNPMInit) {
+      this.props.addCommand("npm init -y");
+    }
+    this.props.addCommand(
+      "npm install --save-dev eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard"
+    );
+    this.props.addCommand(`echo '{
+      "env": {
+        "browser": true,
+        "es6": true
+      },
+      "extends": ["standard", "prettier"],
+      "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+      },
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+      },
+      "rules": {}
+    }' >.eslintrc.json`);
   }
   render() {
     return (
@@ -27,7 +49,7 @@ export default class Eslint extends Component {
             </li>
           </ul>
           <ol>
-            {this.props.hasRunNPMInit && (
+            {this.props.shouldRunNPMInit && (
               <li>
                 First up, we're going to work with node_modules while
                 developing, so let's set that up

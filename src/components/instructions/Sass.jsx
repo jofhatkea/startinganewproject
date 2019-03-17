@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 
 export default class Sass extends Component {
+  constructor(props) {
+    super(props);
+    if (this.props.shouldRunNPMInit) {
+      this.props.addCommand("npm init -y");
+    }
+
+    this.props.addCommand(`npm install --save-dev node-sass`);
+  }
   render() {
-    console.log(this.props);
     return (
       <article id="Sass" className="instruction story">
         <details>
           <summary>SASS</summary>
           <p>SASS is kinda cool, so congrats, let's go:</p>
           <ol>
-            {!this.props.hasRunNPMInit && (
+            {this.props.shouldRunNPMInit && (
               <li>
                 First up, we're going to work with node_modules while
                 developing, so let's set that up

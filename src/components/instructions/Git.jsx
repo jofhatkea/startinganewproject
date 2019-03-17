@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 export default class Git extends Component {
+  constructor(props) {
+    super(props);
+    this.props.addCommand("git init");
+    this.props.addCommand(`echo "dist/
+    node_modules/" >.gitignore`);
+    this.props.addCommand(`git add --all && git commit -m "initial commit"`);
+  }
   render() {
     return (
       <article id="Git" className="instruction story">
