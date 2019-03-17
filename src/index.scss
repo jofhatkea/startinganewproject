@@ -31,17 +31,22 @@ $color__navbar: #2196f3;
   a {
     color: $color__text--low;
     margin-right: 20px;
+    display: inline-block;
+    width: 200px;
+
     span {
       display: inline-block;
+
       padding: 8px;
       color: $color__navbar;
       transition: all 0.3s;
-      border-radius: 50%;
+      border-radius: 15px;
       width: 30px;
       height: 30px;
       text-align: center;
       line-height: 15px;
       margin-right: 4px;
+      background: $color__text;
     }
     &[aria-current] {
       color: $color__text;
