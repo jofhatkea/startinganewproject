@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import Checkbox from "../Checkbox";
 
 export default class Step1 extends Component {
-  state = {
-    chosen: []
-  };
-
+  /*
   checked = e => {
     e.persist();
     console.log(e.target.value);
@@ -20,10 +17,10 @@ export default class Step1 extends Component {
         })
       }));
     }
-  };
+  };*/
   submitted = e => {
     console.log("submitted");
-    this.props.onSubmit(this.state.chosen);
+    this.props.onSubmit();
   };
   render() {
     const questions = this.props.questions.map((q, i) => {
@@ -35,7 +32,8 @@ export default class Step1 extends Component {
             value={q.key}
             label={q.q}
             type="switch"
-            onClick={this.checked}
+            onChange={this.props.onChoice}
+            checked={this.props.chosen.includes(q.key)}
           />
           <p>{q.d}</p>
         </div>
@@ -46,7 +44,7 @@ export default class Step1 extends Component {
         <h1>What technologies would you like to work with?</h1>
         {questions}
         <button
-          disabled={this.state.chosen.length === 0}
+          disabled={this.props.chosen.length === 0}
           onClick={this.submitted}
         >
           {" "}

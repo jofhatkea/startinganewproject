@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 import Step1 from "./components/steps/Step1";
 import InstructionsContainer from "./components/instructions/InstructionsContainer";
+import { Router, navigate } from "@reach/router";
 
 export default class App extends Component {
   questions = [
@@ -17,32 +18,50 @@ export default class App extends Component {
     { q: "SASS", key: "sass", d: "" }
   ];
   state = {
-    step: 1,
-    chosen: [this.questions[2]]
+    chosen: []
   };
-
+  onChoice = e => {
+    e.persist();
+    if (e.target.checked) {
+      this.setState(prevState => ({
+        chosen: prevState.chosen.concat(e.target.value)
+      }));
+    } else {
+      this.setState(prevState => ({
+        chosen: prevState.chosen.filter(c => {
+          return c !== e.target.value;
+        })
+      }));
+    }
+  };
   step1Submit = data => {
-    console.log(data, this.questions);
+    /*console.log(data, this.questions);
     const newData = this.questions.filter(q => data.indexOf(q.key) > -1);
     this.setState(prevState => ({
-      step: 2,
       chosen: newData
-    }));
-  };
-  step2Submit = data => {
-    console.log(data);
+    }));*/
+    navigate(`/instructions`);
   };
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar step={this.state.step} />
         <Main>
-          {this.state.step === 1 && (
-            <Step1 onSubmit={this.step1Submit} questions={this.questions} />
-          )}
-          {this.state.step === 2 && (
-            <InstructionsContainer data={this.state.chosen} />
-          )}
+          <Router>
+            <Step1
+              path="/"
+              onSubmit={this.step1Submit}
+              questions={this.questions}
+              chosen={this.state.chosen}
+              onChoice={this.onChoice}
+            />
+
+            <InstructionsContainer
+              path="/instructions"
+              questions={this.questions}
+              chosen={this.state.chosen}
+            />
+          </Router>
         </Main>
       </div>
     );

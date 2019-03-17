@@ -19,6 +19,35 @@ $checkbox__checkmark__color--disabled: $color__back--high;
 
 $checkbox__label__color: $color__text;
 $checkbox__label__color--disabled: $color__text--low;
+
+$color__navbar: #2196f3;
+#NavBar {
+  nav {
+    padding: 8px;
+  }
+  a {
+    color: $color__text--low;
+    margin-right: 20px;
+    span {
+      display: inline-block;
+      padding: 8px;
+      color: $color__navbar;
+      transition: all 0.3s;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 15px;
+      margin-right: 4px;
+    }
+    &[aria-current] {
+      color: $color__text;
+      & span {
+        background: $color__text;
+      }
+    }
+  }
+}
 .instruction {
   summary {
     font-size: 1.4em;

@@ -20,13 +20,16 @@ export default class InstructionsContainer extends Component {
     });
   };
   render() {
+    const filtered = this.props.questions.filter(q => {
+      return this.props.chosen.includes(q.key);
+    });
     const options = {
       git: Git,
       sass: Sass,
       eslint: Eslint,
       node_modules: Nodemodules
     };
-    const chosen = this.props.data.map(item => {
+    const chosen = filtered.map(item => {
       const SpecificStory = options[item.key];
       return (
         <SpecificStory
@@ -43,6 +46,7 @@ export default class InstructionsContainer extends Component {
       <section id="InstructionsContainer">
         <h1>Instructions</h1>
         {chosen}
+        {/*TODO on empty selections*/}
         {/*additional steps needed (like sass watch)*/}
         {/*While developing container*/}
       </section>
