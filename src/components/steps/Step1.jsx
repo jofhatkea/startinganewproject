@@ -41,7 +41,7 @@ export default class Step1 extends Component {
     });
     return (
       <section id="Step1">
-        <h1>What technologies would you like to work with?</h1>
+        <h1>What should I help you set up?</h1>
         {questions}
         <button
           disabled={this.props.chosen.length === 0}
