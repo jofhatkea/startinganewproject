@@ -19,7 +19,25 @@ $checkbox__checkmark__color--disabled: $color__back--high;
 
 $checkbox__label__color: $color__text;
 $checkbox__label__color--disabled: $color__text--low;
-
+.instruction {
+  summary {
+    font-size: 1.4em;
+    outline: 0;
+  }
+  li {
+    line-height: 1.5em;
+    margin-left: 1em;
+    list-style-position: inside;
+  }
+}
+pre code {
+  font-family: "Courier New", Courier, monospace;
+  background: $color__back--high;
+  display: block;
+  margin: 8px;
+  padding: 8px;
+  overflow: auto;
+}
 button {
   background: $color__primary;
   margin-top: $checkbox__size;

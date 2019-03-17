@@ -26,9 +26,6 @@ export default class Step1 extends Component {
     this.props.onSubmit(this.state.chosen);
   };
   render() {
-    if (!this.props.active) {
-      return "";
-    }
     const questions = this.props.questions.map((q, i) => {
       //return <Checkbox name={q.key} value={q.key} label={q.q} />;
       return (

@@ -5,14 +5,20 @@ import Sass from "./Sass";
 import Eslint from "./Eslint";
 export default class InstructionsContainer extends Component {
   state = {
-    forceParcel: false
+    isParcel: false,
+    hasRunNPMInit: false
   };
-  componentDidMount() {
-    //if() nodemodules chosen: force parcel
+
+  setIsParcel = e => {
     this.setState({
-      forceParcel: true
+      isParcel: true
     });
-  }
+  };
+  setHasRunNPMInit = e => {
+    this.setState({
+      hasRunNPMInit: true
+    });
+  };
   render() {
     const options = {
       git: Git,
@@ -22,12 +28,23 @@ export default class InstructionsContainer extends Component {
     };
     const chosen = this.props.data.map(item => {
       const SpecificStory = options[item.key];
-      return <SpecificStory story={item} isParcel={this.state.forceParcel} />;
+      return (
+        <SpecificStory
+          story={item}
+          key={item.key}
+          hasRunNPMInit={this.state.hasRunNPMInit}
+          isParcel={this.state.isParcel}
+          onRunNPMInit={this.setHasRunNPMInit}
+          onIsParcel={this.setIsParcel}
+        />
+      );
     });
     return (
       <section id="InstructionsContainer">
         <h1>Instructions</h1>
         {chosen}
+        {/*additional steps needed (like sass watch)*/}
+        {/*While developing container*/}
       </section>
     );
   }
