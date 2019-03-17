@@ -24,30 +24,77 @@ $color__navbar: #2196f3;
 .App {
   padding-bottom: 40px;
 }
+:root {
+  --width: 0px;
+  --translateX: 0px;
+}
+@keyframes expand-right {
+  40% {
+    width: var(--width);
+  }
+  60% {
+    width: var(--width);
+    transform: translateX(0px);
+  }
+
+  100% {
+    width: 30px;
+    transform: translateX(var(--translateX));
+  }
+}
+
+@keyframes expand-left {
+  40% {
+    width: var(--width);
+    transform: translateX(var(--translateX));
+  }
+  60% {
+    width: var(--width);
+    transform: translateX(var(--translateX));
+  }
+  100% {
+    width: 30px;
+    transform: translateX(var(--translateX));
+  }
+}
 #NavBar {
   nav {
     padding: 8px;
+    position: relative;
+  }
+  span {
+    color: transparent;
+  }
+  span.mover {
+    display: inline-block;
+    position: absolute;
+    top: 1px;
+
+    padding: 8px;
+    color: $color__navbar;
+
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 15px;
+    margin-right: 4px;
+    background: $color__text;
+    &.animateRight {
+      color: white;
+      animation: expand-right 0.8s ease-out forwards;
+    }
+    &.animateLeft {
+      color: white;
+      animation: expand-left 0.8s ease-out forwards;
+    }
   }
   a {
     color: $color__text--low;
-    margin-right: 20px;
+    margin-left: 40px;
     display: inline-block;
     width: 200px;
 
-    span {
-      display: inline-block;
-
-      padding: 8px;
-      color: $color__navbar;
-      transition: all 0.3s;
-      border-radius: 15px;
-      width: 30px;
-      height: 30px;
-      text-align: center;
-      line-height: 15px;
-      margin-right: 4px;
-      background: $color__text;
-    }
     &[aria-current] {
       color: $color__text;
       & span {

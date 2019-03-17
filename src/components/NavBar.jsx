@@ -6,14 +6,49 @@ export default class NavBar extends Component {
     super(p);
     this.link1 = React.createRef();
     this.link2 = React.createRef();
+    this.mover = React.createRef();
   }
+  state = {
+    active: 1
+  };
+  componentDidMount() {
+    this.mover.current.addEventListener("animationend", e => {
+      console.log(e, this.link2.current.getBoundingClientRect());
+
+      if (this.state.active === 1) {
+        this.mover.current.style.left =
+          this.link2.current.getBoundingClientRect().x + "px";
+        this.setState({
+          active: 2
+        });
+      } else if (this.state.active === 2) {
+        this.mover.current.style.left =
+          this.link1.current.getBoundingClientRect().x + "px";
+        this.setState({
+          active: 1
+        });
+      }
+      this.mover.current.classList.remove("animateRight");
+      this.mover.current.classList.remove("animateLeft");
+    });
+  }
+  //num: hvor skal der flyttes til
   moveBubble = num => {
-    const style =
-      num === 1
-        ? window.getComputedStyle(this.link1.current)
-        : window.getComputedStyle(this.link2.current);
-    //this.link2.current.classList.add("animate");
-    console.log(style);
+    console.log(
+      num,
+      this.link1.current.getBoundingClientRect(),
+      this.link2.current.getBoundingClientRect()
+    );
+    if (num === 1 && this.state.active === 2) {
+      this.mover.current.style.setProperty("--width", "270px");
+      this.mover.current.style.setProperty("--translateX", "-250px");
+      this.mover.current.classList.add("animateLeft");
+    } else if (num === 2 && this.state.active === 1) {
+      this.mover.current.style.setProperty("--width", "270px");
+      this.mover.current.style.setProperty("--translateX", "250px");
+
+      this.mover.current.classList.add("animateRight");
+    }
   };
   render() {
     console.log(this.link1);
@@ -21,21 +56,26 @@ export default class NavBar extends Component {
       <Appbar id="NavBar">
         <h1>The almighty setup guide</h1>
         <nav>
+          <span className="mover" ref={this.mover}>
+            {this.state.active}
+          </span>
+          <span ref={this.link1}>1</span>
           <Link
             to="/"
             onClick={() => {
               this.moveBubble(1);
             }}
           >
-            <span ref={this.link1}>1</span> Setup
+            Setup
           </Link>
+          <span ref={this.link2}>2</span>
           <Link
             to="/instructions"
             onClick={() => {
               this.moveBubble(2);
             }}
           >
-            <span ref={this.link2}>2</span> Instructions
+            Instructions
           </Link>
         </nav>
       </Appbar>
