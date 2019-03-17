@@ -8,7 +8,7 @@ export default class NavBar extends Component {
         <h1>The almighty setup guide</h1>
         <nav>
           <Link to="/">
-            <span>1</span> Technologies
+            <span>1</span> Setup
           </Link>
           <Link to="/instructions">
             <span>2</span> Instructions
