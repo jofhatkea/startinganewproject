@@ -11,9 +11,6 @@ export default class Nodemodules extends Component {
       `npm install --save-dev parcel-plugin-static-files-copy`
     );
   }
-  componentDidMount() {
-    this.props.onIsParcel();
-  }
   render() {
     return (
       <article id="Nodemodules" className="instruction story">

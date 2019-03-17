@@ -21,6 +21,9 @@ $checkbox__label__color: $color__text;
 $checkbox__label__color--disabled: $color__text--low;
 
 $color__navbar: #2196f3;
+.App {
+  padding-bottom: 40px;
+}
 #NavBar {
   nav {
     padding: 8px;

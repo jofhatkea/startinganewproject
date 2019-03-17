@@ -6,7 +6,6 @@ import Eslint from "./Eslint";
 import Commands from "./Commands";
 export default class InstructionsContainer extends Component {
   state = {
-    isParcel: false,
     hasRunNPMInit: false,
     commands: []
   };
@@ -15,16 +14,7 @@ export default class InstructionsContainer extends Component {
       commands: prevState.commands.concat(command)
     }));
   };
-  setIsParcel = e => {
-    this.setState({
-      isParcel: true
-    });
-  };
-  setHasRunNPMInit = e => {
-    this.setState({
-      hasRunNPMInit: true
-    });
-  };
+
   render() {
     const filtered = this.props.questions.filter(q => {
       return this.props.chosen.includes(q.key);
@@ -33,6 +23,7 @@ export default class InstructionsContainer extends Component {
     const whoShouldRunINPInit = filtered.find(candidate =>
       npmINITCandidates.includes(candidate.key)
     );
+    const isParcel = this.props.chosen.includes("node_modules");
     //console.log(whoShouldRunINPInit);
     const options = {
       git: Git,
@@ -47,8 +38,7 @@ export default class InstructionsContainer extends Component {
           story={item}
           key={item.key}
           shouldRunNPMInit={whoShouldRunINPInit.key === item.key}
-          isParcel={this.state.isParcel}
-          onIsParcel={this.setIsParcel}
+          isParcel={isParcel}
           addCommand={this.addCommand}
         />
       );
