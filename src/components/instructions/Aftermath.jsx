@@ -2,18 +2,20 @@ import React from "react";
 
 export default class Aftermath extends React.Component {
   render() {
+    const aftermath = this.props.aftermath.map((a, i) => <li key={i}>{a}</li>);
     return (
       <article id="Commands" className="instruction story">
         <details>
-          <summary>Aftermath</summary>
+          <summary>Aftermath & Manual Stuff</summary>
           <blockquote>
             Aftermath: the consequences or after-effects of a significant
             unpleasant event.
+            <br />
+            <cite> - a dictionary</cite>
           </blockquote>
-          <cite> - a dictionary</cite>
-          <pre>
-            <code className="terminal">{this.props.aftermath.join("\n")}</code>
-          </pre>
+          <h3>Please review the following</h3>
+
+          <ul>{aftermath}</ul>
         </details>
       </article>
     );

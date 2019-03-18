@@ -1,4 +1,4 @@
-@import "partials/superstylin";
+//@import "partials/superstylin";
 $color__back: #252224;
 $color__back--high: lighten($color__back, 20%);
 $color__text: #fff;
@@ -112,6 +112,8 @@ blockquote {
   a {
     color: $color__text;
     margin-left: 40px;
+    padding-bottom: 8px;
+    transform: translateY(-2px);
     display: inline-block;
     width: 200px;
 

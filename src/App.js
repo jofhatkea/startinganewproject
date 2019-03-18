@@ -18,7 +18,7 @@ export default class App extends Component {
     { q: "SASS", key: "sass", d: "" }
   ];
   state = {
-    chosen: [],
+    chosen: ["sass"],
     step: 1
   };
   onChoice = e => {

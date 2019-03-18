@@ -10,6 +10,12 @@ export default class Nodemodules extends Component {
     this.props.addCommand(
       `npm install --save-dev parcel-plugin-static-files-copy`
     );
+    this.props.addAftermath(
+      `Create a folder called "static" in your root directory`
+    );
+    this.props.addAftermath(
+      `Put all "static" files in there (e.g. images that are not used directly in the HTML or used in CSS)`
+    );
   }
   render() {
     return (

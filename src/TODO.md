@@ -9,6 +9,7 @@
 ## Components
 
 - Aftermath
+- - Bullets could be checkboxes? or crossed out
 
 ## Other
 

@@ -7,6 +7,13 @@ export default class Git extends Component {
     this.props.addCommand(`echo "dist/
     node_modules/" >.gitignore`);
     this.props.addCommand(`git add --all && git commit -m "initial commit"`);
+    this.props.addAftermath(
+      `If you need to use github or similar, you need to set that up manually`
+    );
+    this.props.addAftermath(`The same goes for collaborators`);
+    this.props.addAftermath(
+      `Please review the .gitignore file to see if it matches your preferences`
+    );
   }
   render() {
     return (

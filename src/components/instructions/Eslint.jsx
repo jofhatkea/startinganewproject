@@ -25,6 +25,15 @@ export default class Eslint extends Component {
       },
       "rules": {}
     }' >.eslintrc.json`);
+    this.props.addAftermath(
+      `Install the Prettier extension in VS Code (by Esben Petersen)`
+    );
+    this.props.addAftermath(
+      `Install the ESLint extension in VS Code (by Dirk Baeumer)`
+    );
+    this.props.addAftermath(
+      `In VS Code, find your user settings and add the following: "editor.formatOnSave": true`
+    );
   }
   render() {
     return (
@@ -43,9 +52,8 @@ export default class Eslint extends Component {
               </a>
             </li>
             <li>
-              <a href="https://github.com/jofhatkea/front-end/blob/master/setting-up-vs-code-part-2.md">
-                setting-up-vs-code-part-2.md
-              </a>
+              Install the ESLint plugin in VS Code (use the one by Dirk
+              Baeumer).
             </li>
           </ul>
           <ol>
