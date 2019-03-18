@@ -17,7 +17,7 @@ export default class NavBar extends Component {
   //FIXME: add comments, this is so strange
   componentDidMount() {
     this.mover.current.addEventListener("animationend", e => {
-      //TODO: refractor for multiple links
+      //FIXME: refractor for multiple links
       if (this.props.step === 2) {
         this.mover.current.style.left =
           this.link2.current.getBoundingClientRect().x + "px";

@@ -1,0 +1,153 @@
+/* Scale major third
+––––––––––––––––––––––––––––––––– */
+
+/*
+3.815rem
+3.052rem
+2.441rem
+1.953rem
+1.563rem
+1.25rem
+1rem
+0.8rem
+0.64rem
+0.512rem
+0.41rem
+0.328rem
+0.262rem
+0.209rem
+*/
+
+/* Typography
+  ––––––––––––––––––––––––––––––––– */
+
+p {
+  margin-bottom: 1.563rem;
+}
+
+p > *:last-child {
+  margin-bottom: 0;
+}
+
+small {
+  font-size: 0.888rem;
+}
+
+hr {
+  border: 1px solid #343334;
+  margin: 3.052rem 0;
+}
+
+/* Tables
+  ––––––––––––––––––––––––––––––––– */
+table {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 1.563rem;
+}
+
+th,
+td {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  margin: 0;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #d8d8d8;
+}
+
+td {
+  border-bottom: 2px solid #eaeaea;
+}
+
+/* Code
+  ––––––––––––––––––––––––––––––––– */
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 0.8rem;
+  white-space: nowrap;
+
+  padding: 0 0.328rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+p > code {
+  white-space: normal;
+}
+
+pre > code {
+  line-height: 1.563em;
+  font-size: 1.2rem;
+  display: block;
+  padding: 1rem;
+  white-space: pre;
+  margin-bottom: 1.563rem;
+  overflow: scroll;
+}
+
+/* Forces a new-line at the end of a code block for layout purposes. */
+pre > code::after {
+  content: " ";
+}
+
+/* Blockquote
+  ––––––––––––––––––––––––––––––––– */
+blockquote {
+  border-left: 0.25rem solid #f6f6f6;
+  padding: 0 1rem;
+  margin-bottom: 1.563rem;
+}
+
+/* List
+  ––––––––––––––––––––––––––––––––– */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: disc outside;
+}
+
+ol {
+  list-style: decimal outside;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 1.563rem;
+}
+
+li {
+  margin-left: 1.953rem;
+  margin-bottom: 0.64rem;
+}
+
+/* Keyboard
+  ––––––––––––––––––––––––––––––––– */
+kbd {
+  display: inline-block;
+  padding: 0 0.328rem;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+  font-size: 0.64rem;
+  color: #343334;
+  vertical-align: middle;
+  background-color: #f9f9f9;
+  border: solid 1px #d8d8d8;
+  border-bottom: solid 2px #a6a5a6;
+}
+
+/* Abbreviation
+  ––––––––––––––––––––––––––––––––– */
+abbr {
+  text-decoration: none;
+  border-bottom: 1px dashed #949394;
+}
+
+abbr:hover {
+  cursor: help;
+}

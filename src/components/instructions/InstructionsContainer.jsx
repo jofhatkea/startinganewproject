@@ -4,14 +4,22 @@ import Nodemodules from "./Nodemodules";
 import Sass from "./Sass";
 import Eslint from "./Eslint";
 import Commands from "./Commands";
+import Aftermath from "./Aftermath";
+
 export default class InstructionsContainer extends Component {
   state = {
     hasRunNPMInit: false,
-    commands: []
+    commands: [],
+    aftermath: []
   };
   addCommand = command => {
     this.setState(prevState => ({
       commands: prevState.commands.concat(command)
+    }));
+  };
+  addAftermath = command => {
+    this.setState(prevState => ({
+      aftermath: prevState.aftermath.concat(command)
     }));
   };
 
@@ -20,12 +28,14 @@ export default class InstructionsContainer extends Component {
       return this.props.chosen.includes(q.key);
     });
     const npmINITCandidates = ["eslint", "node_modules", "sass"];
-    //TODO: breaks if nobody should
-    const whoShouldRunINPInit = filtered.find(candidate =>
+    let whoShouldRunINPInit = filtered.find(candidate =>
       npmINITCandidates.includes(candidate.key)
     );
+    if (!whoShouldRunINPInit) {
+      whoShouldRunINPInit = { key: "" };
+    }
     const isParcel = this.props.chosen.includes("node_modules");
-    //console.log(whoShouldRunINPInit);
+
     const options = {
       git: Git,
       sass: Sass,
@@ -41,17 +51,33 @@ export default class InstructionsContainer extends Component {
           shouldRunNPMInit={whoShouldRunINPInit.key === item.key}
           isParcel={isParcel}
           addCommand={this.addCommand}
+          addAftermath={this.addAftermath}
         />
       );
     });
     return (
       <section id="InstructionsContainer">
         <h1>Instructions</h1>
-        {chosen}
         {chosen.length === 0 && (
-          <h3>Chose a few technologies, then come back :-)</h3>
+          <h3>Chose a few setup options, then come back :-)</h3>
         )}
+        {chosen.length > 0 && (
+          <>
+            <p>
+              The first section gives you an overview of what you need to do
+            </p>
+            <p>
+              The second is the quick and dirty version that basically only
+              includes the terminal commands and a few instruction I can not set
+              up for you
+            </p>
+          </>
+        )}
+        {chosen}
+
+        <hr />
         {chosen.length > 0 && <Commands commands={this.state.commands} />}
+        {chosen.length > 0 && <Aftermath aftermath={this.state.aftermath} />}
         {/*TODO:*/}
         {/* post notes container (add this to scripts, how to "live-server") */}
         {/*additional steps needed (like sass watch)*/}

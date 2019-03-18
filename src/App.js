@@ -36,8 +36,6 @@ export default class App extends Component {
     }
   };
   step1Submit = data => {
-    //TODO: kald moveBubble i Navbar
-    //kunne implementere step (der stadig findes en rest af i navbar component kaldet)
     this.setState({
       step: 2
     });

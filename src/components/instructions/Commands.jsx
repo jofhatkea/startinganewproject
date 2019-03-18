@@ -7,7 +7,9 @@ export default class Commands extends Component {
         <details>
           <summary>Instant Setup</summary>
           <p>Just paste the following into your terminal</p>
-          <pre>{this.props.commands.join("\n")}</pre>
+          <pre>
+            <code className="terminal">{this.props.commands.join("\n")}</code>
+          </pre>
         </details>
       </article>
     );

@@ -1,3 +1,4 @@
+@import "partials/superstylin";
 $color__back: #252224;
 $color__back--high: lighten($color__back, 20%);
 $color__text: #fff;
@@ -21,6 +22,25 @@ $checkbox__label__color: $color__text;
 $checkbox__label__color--disabled: $color__text--low;
 
 $color__navbar: #2196f3;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  text-decoration-skip-ink: "auto";
+}
+
+blockquote {
+  border-left: 0.25rem solid #f6f6f6;
+  padding: 0 1rem;
+  margin-bottom: 1.563rem;
+}
+
 .App {
   padding-bottom: 40px;
 }
@@ -109,6 +129,8 @@ $color__navbar: #2196f3;
     font-size: 1.4em;
     outline: 0;
     margin-bottom: 40px;
+    color: $color__primary;
+    cursor: pointer;
   }
   li {
     line-height: 1.5em;
@@ -152,12 +174,6 @@ button {
     padding-top: 10px;
     font-size: 16px;
   }
-}
-// RESET
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 // MAIN
@@ -210,7 +226,7 @@ h1 {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    outline: none; // TODO: manage :focus
+    outline: none;
     background: $color__back;
     cursor: pointer;
     border: $checkbox__border__size solid $checkbox__border__color;
