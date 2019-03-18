@@ -8,25 +8,22 @@ export default class NavBar extends Component {
     this.link2 = React.createRef();
     this.mover = React.createRef();
   }
-  state = {
-    active: 1
-  };
-  //TODO: ved redirect trigger animationen ikke
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log(prevProps.step, this.props.step);
+    if (prevProps.step !== this.props.step) {
+      this.moveBubble(this.props.step);
+    }
+  }
+  //FIXME: add comments, this is so strange
   componentDidMount() {
     this.mover.current.addEventListener("animationend", e => {
       //TODO: refractor for multiple links
-      if (this.state.active === 1) {
+      if (this.props.step === 2) {
         this.mover.current.style.left =
           this.link2.current.getBoundingClientRect().x + "px";
-        this.setState({
-          active: 2
-        });
-      } else if (this.state.active === 2) {
+      } else if (this.props.step === 1) {
         this.mover.current.style.left =
           this.link1.current.getBoundingClientRect().x + "px";
-        this.setState({
-          active: 1
-        });
       }
       this.mover.current.classList.remove("animateRight");
       this.mover.current.classList.remove("animateLeft");
@@ -34,12 +31,14 @@ export default class NavBar extends Component {
   }
   //num: hvor skal der flyttes til
   moveBubble = num => {
-    //TODO: refractor for multiple links
-    if (num === 1 && this.state.active === 2) {
+    //FIXME: refractor for multiple links
+    if (num === 1) {
+      // && this.props.step === 2
       this.mover.current.style.setProperty("--width", "270px");
       this.mover.current.style.setProperty("--translateX", "-250px");
       this.mover.current.classList.add("animateLeft");
-    } else if (num === 2 && this.state.active === 1) {
+    } else if (num === 2) {
+      // && this.props.step === 1
       this.mover.current.style.setProperty("--width", "270px");
       this.mover.current.style.setProperty("--translateX", "250px");
       this.mover.current.classList.add("animateRight");
@@ -51,13 +50,13 @@ export default class NavBar extends Component {
         <h1>The almighty setup guide</h1>
         <nav>
           <span className="mover" ref={this.mover}>
-            {this.state.active}
+            {this.props.step}
           </span>
           <span ref={this.link1}>1</span>
           <Link
             to="/"
             onClick={() => {
-              this.moveBubble(1);
+              this.props.onStepChange(1);
             }}
           >
             Setup
@@ -66,7 +65,7 @@ export default class NavBar extends Component {
           <Link
             to="/instructions"
             onClick={() => {
-              this.moveBubble(2);
+              this.props.onStepChange(2);
             }}
           >
             Instructions

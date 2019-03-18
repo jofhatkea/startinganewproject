@@ -18,7 +18,8 @@ export default class App extends Component {
     { q: "SASS", key: "sass", d: "" }
   ];
   state = {
-    chosen: []
+    chosen: [],
+    step: 1
   };
   onChoice = e => {
     e.persist();
@@ -37,12 +38,28 @@ export default class App extends Component {
   step1Submit = data => {
     //TODO: kald moveBubble i Navbar
     //kunne implementere step (der stadig findes en rest af i navbar component kaldet)
-    navigate(`/instructions`);
+    this.setState({
+      step: 2
+    });
+    navigate(`/instructions`); //kan ikke få det til at virke , { state: { highlightId: 2 } }
   };
+  onStepChange = num => {
+    this.setState({
+      step: num
+    });
+  };
+  componentDidMount() {
+    //FIXME: very fragile!
+    if (window.location.pathname === "/instructions") {
+      this.setState({
+        step: 2
+      });
+    }
+  }
   render() {
     return (
       <div className="App">
-        <NavBar step={this.state.step} />
+        <NavBar step={this.state.step} onStepChange={this.onStepChange} />
         <Main>
           <Router>
             <Step1
