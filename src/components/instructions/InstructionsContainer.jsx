@@ -20,7 +20,7 @@ export default class InstructionsContainer extends Component {
       return this.props.chosen.includes(q.key);
     });
     const npmINITCandidates = ["eslint", "node_modules", "sass"];
-    //TODO breaks if nobody should
+    //TODO: breaks if nobody should
     const whoShouldRunINPInit = filtered.find(candidate =>
       npmINITCandidates.includes(candidate.key)
     );
@@ -52,7 +52,7 @@ export default class InstructionsContainer extends Component {
           <h3>Chose a few technologies, then come back :-)</h3>
         )}
         {chosen.length > 0 && <Commands commands={this.state.commands} />}
-        {/*TODO*/}
+        {/*TODO:*/}
         {/* post notes container (add this to scripts, how to "live-server") */}
         {/*additional steps needed (like sass watch)*/}
         {/*While developing container*/}

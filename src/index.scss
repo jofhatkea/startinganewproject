@@ -82,21 +82,22 @@ $color__navbar: #2196f3;
     background: $color__text;
     &.animateRight {
       color: white;
-      animation: expand-right 0.4s ease-out forwards;
+      animation: expand-right 0.2s ease-out forwards;
     }
     &.animateLeft {
       color: white;
-      animation: expand-left 0.4s ease-out forwards;
+      animation: expand-left 0.2s ease-out forwards;
     }
   }
   a {
-    color: $color__text--low;
+    color: $color__text;
     margin-left: 40px;
     display: inline-block;
     width: 200px;
 
     &[aria-current] {
       color: $color__text;
+      text-decoration: underline;
       & span {
         background: $color__text;
       }
