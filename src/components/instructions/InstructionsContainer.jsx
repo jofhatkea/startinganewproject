@@ -63,20 +63,15 @@ export default class InstructionsContainer extends Component {
         )}
         {chosen.length > 0 && (
           <>
-            <p>
-              The first section gives you an overview of what you need to do
-            </p>
-            <p>
-              The second is the quick and dirty version that basically only
-              includes the terminal commands and a few instruction I can not set
-              up for you
-            </p>
+            <p>Step by step instructions</p>
           </>
         )}
         {chosen}
 
         <hr />
+        <h3>I've done this stuff before, just give me the commands</h3>
         {chosen.length > 0 && <Commands commands={this.state.commands} />}
+        <h3>Checklisty kind of reference</h3>
         {chosen.length > 0 && <Aftermath aftermath={this.state.aftermath} />}
         {/*TODO:*/}
         {/* post notes container (add this to scripts, how to "live-server") */}

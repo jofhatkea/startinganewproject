@@ -9,7 +9,6 @@ export default class NavBar extends Component {
     this.mover = React.createRef();
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(prevProps.step, this.props.step);
     if (prevProps.step !== this.props.step) {
       this.moveBubble(this.props.step);
     }
@@ -32,15 +31,22 @@ export default class NavBar extends Component {
   //num: hvor skal der flyttes til
   moveBubble = num => {
     //FIXME: refractor for multiple links
+    const distance =
+      this.link2.current.getBoundingClientRect().x -
+      this.link1.current.getBoundingClientRect().x;
+    const width = distance + 2 * 20;
     if (num === 1) {
       // && this.props.step === 2
-      this.mover.current.style.setProperty("--width", "270px");
-      this.mover.current.style.setProperty("--translateX", "-250px");
+      this.mover.current.style.setProperty("--width", `${width}px`);
+      this.mover.current.style.setProperty(
+        "--translateX",
+        `${distance * -1}px`
+      );
       this.mover.current.classList.add("animateLeft");
     } else if (num === 2) {
       // && this.props.step === 1
-      this.mover.current.style.setProperty("--width", "270px");
-      this.mover.current.style.setProperty("--translateX", "250px");
+      this.mover.current.style.setProperty("--width", `${width}px`);
+      this.mover.current.style.setProperty("--translateX", `${distance}px`);
       this.mover.current.classList.add("animateRight");
     }
   };

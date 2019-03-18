@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^startinganewproject.kea-alt-del.dk/$ [NC] 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . https://startinganewproject.kea-alt-del.dk/ [L]

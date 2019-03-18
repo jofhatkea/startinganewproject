@@ -2,7 +2,9 @@ import React from "react";
 
 export default class Aftermath extends React.Component {
   render() {
-    const aftermath = this.props.aftermath.map((a, i) => <li key={i}>{a}</li>);
+    const aftermath = this.props.aftermath.map((a, i) => (
+      <li key={i} dangerouslySetInnerHTML={{ __html: a }} />
+    ));
     return (
       <article id="Commands" className="instruction story">
         <details>

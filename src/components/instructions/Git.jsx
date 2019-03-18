@@ -5,7 +5,7 @@ export default class Git extends Component {
     super(props);
     this.props.addCommand("git init");
     this.props.addCommand(`echo "dist/
-    node_modules/" >.gitignore`);
+node_modules/" >.gitignore`);
     this.props.addCommand(`git add --all && git commit -m "initial commit"`);
     this.props.addAftermath(
       `If you need to use github or similar, you need to set that up manually`

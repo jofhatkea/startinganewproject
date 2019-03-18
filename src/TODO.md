@@ -3,8 +3,6 @@
 ## CSS
 
 - merge styles better, superstylin is not really used
-- isolate animations in partial
-- link text /(navbar) not sligned to bubble
 
 ## Components
 

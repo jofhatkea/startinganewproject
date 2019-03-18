@@ -1,0 +1,33 @@
+:root {
+  --width: 0px;
+  --translateX: 0px;
+}
+@keyframes expand-right {
+  40% {
+    width: var(--width);
+  }
+  60% {
+    width: var(--width);
+    transform: translateX(0px);
+  }
+
+  100% {
+    width: 30px;
+    transform: translateX(var(--translateX));
+  }
+}
+
+@keyframes expand-left {
+  40% {
+    width: var(--width);
+    transform: translateX(var(--translateX));
+  }
+  60% {
+    width: var(--width);
+    transform: translateX(var(--translateX));
+  }
+  100% {
+    width: 30px;
+    transform: translateX(var(--translateX));
+  }
+}

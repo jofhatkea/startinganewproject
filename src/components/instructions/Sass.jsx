@@ -8,6 +8,12 @@ export default class Sass extends Component {
     }
 
     this.props.addCommand(`npm install --save-dev node-sass`);
+    this.props.addAftermath(
+      `Add the sass-watcher script to your package.json (see above)`
+    );
+    this.props.addAftermath(
+      `run <code>npm run watchsass</code> to compile SASS and watch for changes`
+    );
   }
   render() {
     return (
