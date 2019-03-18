@@ -11,10 +11,10 @@ export default class NavBar extends Component {
   state = {
     active: 1
   };
+  //TODO ved redirect trigger animationen ikke
   componentDidMount() {
     this.mover.current.addEventListener("animationend", e => {
-      console.log(e, this.link2.current.getBoundingClientRect());
-
+      //TODO refractor for multiple links
       if (this.state.active === 1) {
         this.mover.current.style.left =
           this.link2.current.getBoundingClientRect().x + "px";
@@ -34,11 +34,7 @@ export default class NavBar extends Component {
   }
   //num: hvor skal der flyttes til
   moveBubble = num => {
-    console.log(
-      num,
-      this.link1.current.getBoundingClientRect(),
-      this.link2.current.getBoundingClientRect()
-    );
+    //TODO refractor for multiple links
     if (num === 1 && this.state.active === 2) {
       this.mover.current.style.setProperty("--width", "270px");
       this.mover.current.style.setProperty("--translateX", "-250px");
@@ -46,12 +42,10 @@ export default class NavBar extends Component {
     } else if (num === 2 && this.state.active === 1) {
       this.mover.current.style.setProperty("--width", "270px");
       this.mover.current.style.setProperty("--translateX", "250px");
-
       this.mover.current.classList.add("animateRight");
     }
   };
   render() {
-    console.log(this.link1);
     return (
       <Appbar id="NavBar">
         <h1>The almighty setup guide</h1>

@@ -82,11 +82,11 @@ $color__navbar: #2196f3;
     background: $color__text;
     &.animateRight {
       color: white;
-      animation: expand-right 0.8s ease-out forwards;
+      animation: expand-right 0.4s ease-out forwards;
     }
     &.animateLeft {
       color: white;
-      animation: expand-left 0.8s ease-out forwards;
+      animation: expand-left 0.4s ease-out forwards;
     }
   }
   a {

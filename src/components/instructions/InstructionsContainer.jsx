@@ -20,6 +20,7 @@ export default class InstructionsContainer extends Component {
       return this.props.chosen.includes(q.key);
     });
     const npmINITCandidates = ["eslint", "node_modules", "sass"];
+    //TODO breaks if nobody should
     const whoShouldRunINPInit = filtered.find(candidate =>
       npmINITCandidates.includes(candidate.key)
     );

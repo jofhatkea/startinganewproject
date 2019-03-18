@@ -5,7 +5,8 @@ export default class Commands extends Component {
     return (
       <article id="Commands" className="instruction story">
         <details>
-          <summary>Commands</summary>
+          <summary>Instant Setup</summary>
+          <p>Just paste the following into your terminal</p>
           <pre>{this.props.commands.join("\n")}</pre>
         </details>
       </article>

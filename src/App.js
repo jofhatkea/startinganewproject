@@ -35,11 +35,8 @@ export default class App extends Component {
     }
   };
   step1Submit = data => {
-    /*console.log(data, this.questions);
-    const newData = this.questions.filter(q => data.indexOf(q.key) > -1);
-    this.setState(prevState => ({
-      chosen: newData
-    }));*/
+    //TODO kald moveBubble i Navbar
+    //kunne implementere step (der stadig findes en rest af i navbar component kaldet)
     navigate(`/instructions`);
   };
   render() {
